@@ -1,0 +1,35 @@
+1.HTTP:
+/user
+    /signup   POST      
+    /login    POST   {userid,password}        res={userid,dp,username}-------------
+    /update   POST    {oldpassword,newpassword}   
+    /logout   GET
+    /search   GET    ?userid
+    /username GET    ?userid    check availability
+
+
+/contact
+    /createcontact   POST  {from,to,fromname,toname,fromdp,todp} -------
+    /allcontact      GET  
+    /lastinfo        GET ?userid   -------     res={text,date,count}
+
+/message
+    /allmessage     POST  {to}  ?end
+
+/setting
+       /            GET     ---------------- get user setting
+	/lastseen     GET    ------------- toggle ` res {value}
+2.socket:
+   emit   status         userid,callbak     callback(status)
+   emit   newmsg         doc
+   on     newmsg         doc,callback       callback()
+   on     received       doc
+   emit   readrecipt     doc
+   on     readrecipt     doc
+   emit   delete         doc
+   on     delete         doc
+   emit   typing         userid
+   on     typing         userid
+
+
+contact:   {from,to,fromname,toname}
